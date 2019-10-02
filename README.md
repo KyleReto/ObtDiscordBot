@@ -14,6 +14,4 @@ Programmer - Jonathan Feurtado
 
 Game Design & Balance - David Osunkwo
 
-Game Design & Balance - Matthew Nunez
-
 The documentation for discord.js is here: https://discord.js.org/#/docs/main/stable/general/welcome.
