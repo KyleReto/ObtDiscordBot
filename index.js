@@ -127,4 +127,3 @@ client.login(config.token);
 }catch(e){
   console.log(e);
 }
-//NICC WAS HERE
