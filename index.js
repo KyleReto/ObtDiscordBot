@@ -32,6 +32,18 @@ client.on("message", async message => {
   console.log("Commands: \n " + JSON.stringify(command));
   console.log("Arguments: \n " + JSON.stringify(args));
 
+  //Help command: gives a basic overview of command options.
+  if (command === "help"){
+    return message.channel.send(''+
+    'To enter a command, type \`?o [command]\`\n' +
+    'Valid commands: \n' +
+    '\`?o register\` - Register yourself in Obt (You only need to do this once)\n' +
+    '\`?o balance\` - Gives your current amount of ObtCoins\n' +
+    '\`?o daily\` - Gives you your daily 100 ObtCoins\n' +
+    '\`?o transfer [@Target] [amount]\` - Transfers [amount] of ObtCoins to [@Target] from your account\n'
+    );
+  }
+
   if (command === "register"){
     //Register a new user (or reply with a message if they're already registered)
     if (ObtUser.getUserIndexById(message.author.id,users) === -1){
