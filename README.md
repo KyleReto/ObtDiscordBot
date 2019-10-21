@@ -2,7 +2,7 @@
 
 Dangerous Space Squad's Discord Bot
 
-Obt serves various purposes, most notably the untitled game functionality.
+Obt serves various purposes, most notably the (untitled) game functionality.
 
 Lead Programmer & Project Lead - Kyle Reto
 
