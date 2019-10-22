@@ -1,7 +1,6 @@
 //On an error, log to console (see catch at end of file)
 try{
 // Import the discord.js module
-// test DAVID
 // See https://discord.js.org/#/docs/main/stable/general/welcome
 const Discord = require('discord.js');
 //Set client to reference Discord.Client() from d iscord.js
@@ -26,7 +25,6 @@ client.on('ready', () => {
 });
 
 // Create an event listener for messages
-//test
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
