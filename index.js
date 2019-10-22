@@ -16,9 +16,8 @@ const users = JSON.parse(fs.readFileSync("users.json"));
 
 //Prefix for command input
 const prefix = "?o"
-var fs = require('fs');
 /**
- * All code must follow the ready event
+ * All bot code must follow the ready event
  */
 client.on('ready', () => {
   console.log('I am ready!');
@@ -35,7 +34,7 @@ client.on("message", async message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  //Debug: Log all commands and args to console
+  //Debug: Log all commands and args to console for debug purposes
   console.log("Commands: \n " + JSON.stringify(command));
   console.log("Arguments: \n " + JSON.stringify(args));
 
@@ -56,7 +55,8 @@ client.on("message", async message => {
     if (ObtUser.getUserIndexById(message.author.id,users) === -1){
       var newUser = new ObtUser(message.author.id);
       users.push(newUser);
-      fs.writeFile("users.txt", JSON.stringify(users), function(err) {
+      //This bit of code updates users.
+      fs.writeFile("users.json", JSON.stringify(users), function(err) {
         if (err) {
           console.log(err);
         }
@@ -89,7 +89,7 @@ client.on("message", async message => {
       //Set daily date to today
       users[userId].lastDailyDate = new Date(Date.now()).getDate();
       //Rewrite the json file storing all users
-      fs.writeFile("users.txt", JSON.stringify(users), function(err) {
+      fs.writeFile("users.json", JSON.stringify(users), function(err) {
         if (err) {
           console.log(err);
         }
@@ -118,7 +118,7 @@ client.on("message", async message => {
         if (amount <= users[payer].coin){
           ObtUser.transfer(message.author.id, message.mentions.users.first().id, users, amount);
           message.reply(amount + " ObtCoins successfully sent to " + message.mentions.users.first());
-          fs.writeFile("users.txt", JSON.stringify(users), function(err) {
+          fs.writeFile("users.json", JSON.stringify(users), function(err) {
             if (err) {
               console.log(err);
             }
