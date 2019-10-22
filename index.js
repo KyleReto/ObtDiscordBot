@@ -1,11 +1,18 @@
-  try{
+//On an error, log to console (see catch at end of file)
+try{
 // Import the discord.js module
+// See https://discord.js.org/#/docs/main/stable/general/welcome
 const Discord = require('discord.js');
+//Set client to reference Discord.Client() from discord.js
 const client = new Discord.Client();
+//Set config to the config json file (see ./config.json in this folder)
 const config = require("./config.json");
+//Set ObtUser to the ObtUser file (see ./ObtUser.js in this folder)
 const ObtUser = require('./ObtUser.js');
+//fs is Node's filestream, used to read and write files
 var fs = require('fs');
-const users = JSON.parse(fs.readFileSync("users.txt"));
+//users = the users.json file containing saved user data.
+const users = JSON.parse(fs.readFileSync("users.json"));
 
 //Prefix for command input
 const prefix = "?o"
