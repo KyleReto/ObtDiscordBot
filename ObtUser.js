@@ -1,8 +1,15 @@
 const Discord = require('discord.js');
+//This is a class, ObtUser, which stores various details about each user of the bot.
+//This is separate from Discord.js' user class, because we have other data to store.
+//To convert from discord User to ObtUser, use the getUserIndexById() method
+//To convert the other way, this.id refers to the discord id
 class ObtUser{
   constructor(id){
+    //The user's discord id (Snowflake type)
     this.id = id;
+    //The user's ObtCoins. Should always be an integer.
     this.coin = 0;
+    //The last date (eg 31 for the 31st of a month) a user has taken their daily coins.
     this.lastDailyDate = 0;
   }
   //Given an id and an array, search an array of ObtUsers for a given user by id

@@ -134,8 +134,8 @@ client.on("message", async message => {
     }
   }
 
+  //Give the user their current balance of ObtCoins
   if (command === "balance"){
-    //Give the user their current balance of ObtCoins
     return message.reply("you have " + users[userId].coin + " ObtCoins");
   }
 
