@@ -25,6 +25,7 @@ client.on('ready', () => {
 });
 
 // Create an event listener for messages
+//test
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
