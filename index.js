@@ -112,7 +112,6 @@ client.on("message", async message => {
     //If the input is a valid number input
     var amount = parseInt(args[1]);
     if (typeof amount != NaN && amount != 0){
-      console.log(amount);
       //If the payer can afford the input amount
       try{
         if (amount <= users[payer].coin){

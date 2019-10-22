@@ -20,9 +20,7 @@ class ObtUser{
   //Returns the amount transfered if successful, or -1 if the other user was not found
   static transfer(id1, id2, array, amount){
     var sender = array[ObtUser.getUserIndexById(id1, array)];
-    console.log("sender's coin: " + sender.coin);
     var target = array[ObtUser.getUserIndexById(id2, array)];
-    console.log("reciever's coin: " + target.coin);
     if (target != -1 && sender != -1){
       target.coin = target.coin +  amount;
       sender.coin = sender.coin - amount;
