@@ -134,6 +134,18 @@ client.on("message", async message => {
     console.log('vibecheck');
   }
 
+  //How Cute commands
+  if (command === "howcute") {
+    //grab how cute
+    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
+
+    //print to console
+    cosnole.log('howcute');
+
+    //send pic
+    return message.channel.send(ATTACHMENT);
+  }
+
 
   if (command === "daily"){
     //Give the user their daily ObtCoin allowance
