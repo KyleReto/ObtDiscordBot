@@ -43,6 +43,18 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
+  //Bruh Moment Command
+  if (message.content.toLowerCase.includes("bruh moment")){
+    //grab bruh Moment
+    const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png')
+
+    //print to console
+    console.log('THIS IS A CERTIFIED BRUH MOMENT');
+
+    //send IMAGE
+    return message.channel.send(ATTACHMENT);
+  }
+
   //Piranha Plant command
   if (message.content.toLowerCase().includes("piranha plant")){
     message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
