@@ -51,6 +51,22 @@ client.on("message", async message => {
     return console.log("Piranha Plant");
   }
 
+  if (message.content.toLowerCase().includes("fbi open up")){
+    cost ATTACHMENT = new Discord.Attachment('./resources/fbiopenup.gif');
+
+    console.log('fbi open up');
+
+    return message.channel.send(ATTACHMENT);
+  }
+
+  if (message.content.toLowerCase().includes("i need a medic bag")){
+    cost ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
+
+    console.log('fbi open up');
+
+    return message.channel.send(ATTACHMENT);
+  }
+
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
   //format for input is "command args[1] args[2] args[3]..." with single space as the delimiter
