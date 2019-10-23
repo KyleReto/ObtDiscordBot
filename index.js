@@ -23,7 +23,7 @@ client.on('ready', () => {
   console.log('I am ready!');
   client.user.setActivity(`Testing new features!`);
 });
-
+//meme
 // Create an event listener for messages
 //In other words, All the code in this section will be executed once for every message sent in the server
 //The code will stop early if it runs into "return" and ignore the rest of the code (for that message)
