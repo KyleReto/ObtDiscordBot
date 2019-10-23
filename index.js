@@ -52,7 +52,7 @@ client.on("message", async message => {
   }
 
   if (message.content.toLowerCase().includes("fbi open up")){
-    cost ATTACHMENT = new Discord.Attachment('./resources/fbiopenup.gif');
+    const ATTACHMENT = new Discord.Attachment('./resources/fbiopenup.gif');
 
     console.log('fbi open up');
 
@@ -60,7 +60,7 @@ client.on("message", async message => {
   }
 
   if (message.content.toLowerCase().includes("i need a medic bag")){
-    cost ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
+    const ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
 
     console.log('fbi open up');
 
