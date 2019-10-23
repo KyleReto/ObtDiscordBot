@@ -30,6 +30,19 @@ client.on('ready', () => {
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
+
+  //How Cute command
+  if (message.content.toLowerCase().contains("how cute") ) {
+    //grab how cute
+    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
+
+    //print to console
+    console.log('howcute');
+
+    //send pic
+    return message.channel.send(ATTACHMENT);
+  }
+
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
   //format for input is "command args[1] args[2] args[3]..." with single space as the delimiter
@@ -134,17 +147,7 @@ client.on("message", async message => {
     console.log('vibecheck');
   }
 
-  //How Cute commands
-  if (command === "howcute") {
-    //grab how cute
-    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
 
-    //print to console
-    console.log('howcute');
-
-    //send pic
-    return message.channel.send(ATTACHMENT);
-  }
 
 
   if (command === "daily"){
