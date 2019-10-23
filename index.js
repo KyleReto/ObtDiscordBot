@@ -32,7 +32,7 @@ client.on("message", async message => {
   if(message.author.bot) return;
 
   //How Cute command
-  if (message.content.toLowerCase().contains("how cute") ) {
+  if (message.content.toLowerCase().includes("how cute") ) {
     //grab how cute
     const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
 
