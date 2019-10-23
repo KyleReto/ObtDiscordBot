@@ -141,7 +141,7 @@ client.on("message", async message => {
     */
     const ATTACHMENT = new Discord.Attachment('./resources/vibecheck.gif');
     //Send a message that consists of the Attachment object in the ATTACHMENT constant from above.
-    message.channel.send(ATTACHMENT);
+    return message.channel.send(ATTACHMENT);
     //Log the text "vibecheck" into the console (The window you see when you run obt on your computer).
     //`console.log`s are mostly for debugging purposes, they don't do anything practical.
     console.log('vibecheck');
