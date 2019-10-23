@@ -25,12 +25,15 @@ client.on('ready', () => {
 });
 
 // Create an event listener for messages
+//In other words, All the code in this section will be executed once for every message sent in the server
+//The code will stop early if it runs into "return" and ignore the rest of the code (for that message)
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
   //format for input is "command args[1] args[2] args[3]..." with single space as the delimiter
+  //This bit is kind of complicated, you can ignore it
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
@@ -76,8 +79,27 @@ client.on("message", async message => {
   }
 
   if (command === "debuguserarray"){
-    //Return the array of the users to the console for debug purposes
+    //Output the array of the users to the console for debug purposes
     return console.log(JSON.stringify(users));
+  }
+
+  //EXAMPLE COMMAND
+  //To start a command, do if (command === "[commandtexthere]")
+  //The 'command' variable is the first word of the message after ?o, converted to lowercase
+    //Do note that command will always be all lowercase
+  if (command === "debugping"){
+    //If you start a line with 'return' like is done here, all code afterward will be ignored.
+      //As a general rule, use `return` before the final line in the code of whatever you're doing (otherwise you'll be wasting some processing power)
+    //`message` here refers to the message that the event handler is currently looking at
+    //`channel` is a "property" of `message`. It refers to the channel the message is found in.
+      //To learn more about the properties of various objects, see the discord.js documentation on that object
+    //`send()` is a "method" of the channel object. In this case, you're running the send() method on the channel from before
+    //`send()` takes a string here, so in the parentheses you put down the message you want to send
+      //For more information on the methods of various objects, see the discord.js documentation on that object
+    return message.channel.send("pong");
+    //Alternatively, you can use `message.reply("text")` instead of message.channel.send.
+    //The reply() method of the message obejct replies to the message directly, by typing @[sendername], [messagehere]
+      //ex: message.reply("Hello") will look like "@Shabacka, Hello"
   }
 
   if (command === "daily"){
