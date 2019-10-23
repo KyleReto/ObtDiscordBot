@@ -45,6 +45,7 @@ client.on("message", async message => {
 
   //Bruh Moment Command
   if (message.content.toLowerCase.includes("bruh moment")){
+  if (message.content.toLowerCase().includes("bruh moment")){
     //grab bruh Moment
     const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png')
 
