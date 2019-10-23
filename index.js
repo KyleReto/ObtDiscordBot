@@ -140,7 +140,7 @@ client.on("message", async message => {
     const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
 
     //print to console
-    cosnole.log('howcute');
+    console.log('howcute');
 
     //send pic
     return message.channel.send(ATTACHMENT);
