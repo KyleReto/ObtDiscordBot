@@ -109,9 +109,10 @@ client.on("message", async message => {
     The reply() method of the message obejct replies to the message directly, by typing @[sendername], [messagehere]
         ex: message.reply("Hello"); will look like "@Shabacka, Hello"*/
   }
-if (command === "potatobg"){
-return message.channel.send("Sasha Braus");
-}
+
+  if (command === "potatobg"){
+      return message.channel.send("Sasha Braus");
+  }
   //EXAMPLE COMMAND: SENDING AN IMAGE
   if (command === "vibecheck") {
     /*
