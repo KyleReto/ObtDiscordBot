@@ -43,6 +43,14 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
+  //Piranha Plant command
+  if (message.content.toLowerCase().includes("piranha plant")){
+    message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
+    message.channel.send('I wrote my thesis on Piranha Plants! There are just so many species! You got your basic Piranha Plants, your Fire Piranha Plants, Ptooies, Nipper Plants, Nipper Spores, Munchers, Jumping Piranhas, Wild Ptooie Piranhas, Propeller Piranhas, Naval Piranhas, Chewies, Megasmilax, Piranha Pests, Piranha Sprouts, Frost Piranhas, Putrid Piranhas, Proto Piranhas, Piranhabons, Piranha Beans, Mom Piranhas, Small Piranhas, Elasto-Piranhas, Piranha Planets, Bungee Piranhas, Big Bungee Piranhas, Ghosts, Nipper Dandelions, Spiny Piranhas, Dino Piranhas, Fire Stalking Piranhas, Piranha Plorps, River Piranhas, Big Piranhas, Stalking Piranhas, Big Fire Piranhas, Prickly Piranhas, Peewee Piranhas, Inky Piranhas, Gold Piranhas, Bone Piranhas, Big Bone Piranhas, Piranha Pods, Piranha Creepers, Nipper Spore Patches, Paper Fire Piranhas, Poison Piranhas, Big Poison Piranhas, Upside-Down Piranhas, Petey Piranha, Paper Petey Piranha, Petea Piranha-');
+    message.channel.send('I haven\'t even started on all the minor variations!');
+    return console.log("Piranha Plant");
+  }
+
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
   //format for input is "command args[1] args[2] args[3]..." with single space as the delimiter
