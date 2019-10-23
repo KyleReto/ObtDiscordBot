@@ -126,13 +126,14 @@ client.on("message", async message => {
         vibecheck.jpg = The file called "vibecheck.jpg" (You need the file ending
     The image used for this command can be found in the resources folder, which is where you should put pretty much every file used by the bot other than this one.
     */
-    const ATTACHMENT = new Discord.Attachment('./resources/vibecheck.jpg');
+    const ATTACHMENT = new Discord.Attachment('./resources/vibecheck.gif');
     //Send a message that consists of the Attachment object in the ATTACHMENT constant from above.
     message.channel.send(ATTACHMENT);
     //Log the text "vibecheck" into the console (The window you see when you run obt on your computer).
     //`console.log`s are mostly for debugging purposes, they don't do anything practical.
     console.log('vibecheck');
   }
+
 
   if (command === "daily"){
     //Give the user their daily ObtCoin allowance
