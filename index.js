@@ -86,7 +86,12 @@ client.on("message", async message => {
   /*EXAMPLE COMMAND: SENDING A MESSAGE
   To start a command, do if (command === ``[commandtexthere]``)
   The 'command' variable is the first word of the message after ?o, converted to lowercase
-    Do note that command will always be all lowercase*/
+      Do note that command will always be all lowercase
+  All words after the command (all strings separated by spaces) will be saved in the args[] array.
+      The second word is args[0], third is args[1], etc etc.
+      Generally, this is used for other information a command needs once the command is known
+          eg In Tatsumaki, you can do !t avatar @username. "avatar" is the command, "@username" is the first argument (args[0])
+  */
   if (command === "debugping"){
     /*
     If you start a line with 'return' like is done here, all code after that line will be ignored.
