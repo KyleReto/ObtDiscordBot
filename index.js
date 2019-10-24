@@ -92,12 +92,13 @@ client.on("message", async message => {
   }
 
   //im obt methods
-  if (message.content.toLowerCase().includes("im")){
+  if (message.content.toLowerCase().includes("im ")){
     let finalString = message.content;
-    console.log(finalString);
     finalString = finalString.slice(finalString.toLowerCase().search("im")+3);
-    console.log(finalString);
-    finalString = finalString.slice(0, finalString.toLowerCase().search(" "));
+    console.log(finalString.toLowerCase().search(" "));
+    if(finalString.toLowerCase().search(" ") != -1) {
+      finalString = finalString.slice(0, finalString.toLowerCase().search(" "));
+    }
     console.log(finalString);
     message.channel.send("Hi "+finalString+" im obt!");
     return console.log("Im obt");
