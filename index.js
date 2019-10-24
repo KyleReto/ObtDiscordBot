@@ -43,6 +43,18 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
+  //excuse me command
+  if (message.content.toLowerCase().includes("excuse me") ) {
+    //grab excuse me
+    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
+
+    //print to console
+    console.log('excuseme');
+
+    //send pic
+    return message.channel.send(ATTACHMENT);
+  }
+
   //Bruh Moment Command
   if (message.content.toLowerCase().includes("bruh moment")){
     //grab bruh Moment
