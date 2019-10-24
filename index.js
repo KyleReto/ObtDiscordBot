@@ -95,9 +95,9 @@ client.on("message", async message => {
   if (message.content.toLowerCase().includes("im")){
     let finalString = message.content;
     console.log(finalString);
-    finalString = finalString.sbstr(finalString.toLowerCase().search("im")+2);
+    finalString = finalString.slice(finalString.toLowerCase().search("im")+3);
     console.log(finalString);
-    finalString = finalString.sbstr(0, finalString.toLowerCase().search(" "));
+    finalString = finalString.slice(0, finalString.toLowerCase().search(" "));
     console.log(finalString);
     message.channel.send("Hi "+finalString+" im obt!");
     return console.log("Im obt");
