@@ -79,6 +79,15 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
+  //im obt methods
+  if (message.content.toLowerCase().includes("im")){
+    let finalString = message.content;
+    finalString = finalString.sbstr(message.content.toLowerCase().search("im")+2);
+    finalString = finalString.sbstr(0, finalString.toLowerCase().search(" "));
+    message.channel.send("Hi "+finalString+" im obt!");
+    return console.log("Im obt");
+  }
+
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
   //format for input is "command args[1] args[2] args[3]..." with single space as the delimiter
