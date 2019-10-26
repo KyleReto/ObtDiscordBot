@@ -63,6 +63,9 @@ client.on("message", async message => {
     //print to console
     console.log('THIS IS A CERTIFIED BRUH MOMENT');
 
+    //print message
+    message.channel.send('THIS IS A CERTIFIED BRUH MOMENT');
+
     //send IMAGE
     return message.channel.send(ATTACHMENT);
   }
