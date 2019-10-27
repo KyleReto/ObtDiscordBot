@@ -1,6 +1,9 @@
 {
-"scripts": {
-  "start": "nohup node index.js > log.txt 2>&1 & echo $! > pid.txt",
-  "stop": "kill $(tail pid.txt)"
+  "scripts": {
+    "start": "node index.js",
+    "stop": "kill $(tail pid.txt)"
+  },
+  "dependencies": {
+    "discord.js": "^11.5.1"
   }
 }
