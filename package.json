@@ -1,0 +1,6 @@
+{
+"scripts": {
+  "start": "nohup node index.js > log.txt 2>&1 & echo $! > pid.txt",
+  "stop": "kill $(tail pid.txt)"
+  }
+}
