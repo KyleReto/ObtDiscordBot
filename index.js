@@ -111,27 +111,18 @@ client.on("message", async message => {
     return message.channel.send(''+
     'To enter a command, type \`?o [command]\`\n' +
     'Valid commands: \n' +
-    '\`?o register\` - Register yourself in Obt (You only need to do this once)\n' +
     '\`?o balance\` - Gives your current amount of ObtCoins\n' +
     '\`?o daily\` - Gives you your daily 100 ObtCoins\n' +
     '\`?o transfer [@Target] [amount]\` - Transfers [amount] of ObtCoins to [@Target] from your account\n'
     );
   }
 
-  //excuse me command
-  if (command === "excuseme") {
-    //grab excuse me
-    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
+  //Get userId from message
+  var userId = ObtUser.getUserIndexById(message.author.id, users);
 
-    //print to console
-    console.log('excuseme');
-
-    //send pic
-    return message.channel.send(ATTACHMENT);
-  }
-
-  if (command === "register"){
-    //Register a new user (or reply with a message if they're already registered)
+  //If the user is unregistered
+  if (userId === -1){
+    //Register them
     if (ObtUser.getUserIndexById(message.author.id,users) === -1){
       var newUser = new ObtUser(message.author.id);
       users.push(newUser);
@@ -141,25 +132,9 @@ client.on("message", async message => {
           console.log(err);
         }
       });
-      return message.reply('you are now registered!');
-    } else {
-      return message.reply('you\'re already registered!');
     }
   }
-
-  //Get userId from message
-  var userId = ObtUser.getUserIndexById(message.author.id, users);
-
-  //Give unregistered user warning if they are unregistered, skip other checks (that may cause crashes) if they are.
-  if (userId === -1){
-    return message.reply("please use `?o register` before using other commands.");
-  }
-
-  if (command === "debuguserarray"){
-    //Output the array of the users to the console for debug purposes
-    return console.log(JSON.stringify(users));
-  }
-
+  
   /*EXAMPLE COMMAND: SENDING A MESSAGE
   To start a command, do if (command === ``[commandtexthere]``)
   The 'command' variable is the first word of the message after ?o, converted to lowercase
@@ -187,9 +162,6 @@ client.on("message", async message => {
         ex: message.reply("Hello"); will look like "@Shabacka, Hello"*/
   }
 
-  if (command === "potatobg"){
-      return message.channel.send("Sasha Braus");
-  }
   //EXAMPLE COMMAND: SENDING AN IMAGE
   if (command === "vibecheck") {
     /*
@@ -211,8 +183,17 @@ client.on("message", async message => {
     console.log('vibecheck');
   }
 
+  //excuse me command
+  if (command === "excuseme") {
+    //grab excuse me
+    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
 
+    //print to console
+    console.log('excuseme');
 
+    //send pic
+    return message.channel.send(ATTACHMENT);
+  }
 
   if (command === "daily"){
     //Give the user their daily ObtCoin allowance
