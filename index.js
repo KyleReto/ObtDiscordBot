@@ -25,7 +25,7 @@ client.on('ready', () => {
 });
 //meme
 // Create an event listener for messages
-//In other words, All the code in this section will be executed once for every message sent in the server
+//In other words, all the code in this section will be executed once for every message sent in the server
 //The code will stop early if it runs into "return" and ignore the rest of the code (for that message)
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
@@ -38,18 +38,6 @@ client.on("message", async message => {
 
     //print to console
     console.log('howcute');
-
-    //send pic
-    return message.channel.send(ATTACHMENT);
-  }
-
-  //excuse me command
-  if (message.content.toLowerCase().includes("excuse me") ) {
-    //grab excuse me
-    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
-
-    //print to console
-    console.log('excuseme');
 
     //send pic
     return message.channel.send(ATTACHMENT);
@@ -94,8 +82,8 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
-  //im obt methods
-  if (message.content.toLowerCase().includes("im ")){
+  //im obt methods: Removed for being annoying
+  /*if (message.content.toLowerCase().includes("im ")){
     let finalString = message.content;
     finalString = finalString.slice(finalString.toLowerCase().search("im")+3);
     console.log(finalString.toLowerCase().search(" "));
@@ -105,7 +93,7 @@ client.on("message", async message => {
     console.log(finalString);
     message.channel.send("Hi "+finalString+" im obt!");
     return console.log("Im obt");
-  }
+  }*/
 
   //Ignore messages without the prefix
   if(message.content.indexOf(prefix) !== 0) return;
@@ -128,6 +116,18 @@ client.on("message", async message => {
     '\`?o daily\` - Gives you your daily 100 ObtCoins\n' +
     '\`?o transfer [@Target] [amount]\` - Transfers [amount] of ObtCoins to [@Target] from your account\n'
     );
+  }
+
+  //excuse me command
+  if (command === "excuseme") {
+    //grab excuse me
+    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
+
+    //print to console
+    console.log('excuseme');
+
+    //send pic
+    return message.channel.send(ATTACHMENT);
   }
 
   if (command === "register"){
