@@ -11,6 +11,8 @@ class ObtUser{
     this.coin = 0;
     //The last date (eg 31 for the 31st of a month) a user has taken their daily coins.
     this.lastDailyDate = 0;
+    //The user's inventory
+    this.inventory = [];
   }
   //Given an id and an array, search an array of ObtUsers for a given user by id
   //Returns -1 if no user with a matching id is found, or the index if they are.

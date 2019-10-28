@@ -12,7 +12,7 @@ const ObtUser = require('./ObtUser.js');
 //fs is Node's filestream, used to read and write files
 var fs = require('fs');
 //users = the users.json file containing saved user data.
-const users = JSON.parse(fs.readFileSync("users.json"));
+let users = JSON.parse(fs.readFileSync("users.json"));
 
 //Prefix for command input
 const prefix = "?o"
@@ -127,14 +127,12 @@ client.on("message", async message => {
       var newUser = new ObtUser(message.author.id);
       users.push(newUser);
       //This bit of code updates users.
-      fs.writeFile("users.json", JSON.stringify(users), function(err) {
-        if (err) {
-          console.log(err);
-        }
-      });
+      saveUsers(users);
+      //Update userId to point to the new user's index
+      userId = ObtUser.getUserIndexById(message.author.id, users);
     }
   }
-  
+
   /*EXAMPLE COMMAND: SENDING A MESSAGE
   To start a command, do if (command === ``[commandtexthere]``)
   The 'command' variable is the first word of the message after ?o, converted to lowercase
@@ -206,11 +204,7 @@ client.on("message", async message => {
       //Set daily date to today
       users[userId].lastDailyDate = new Date(Date.now()).getDate();
       //Rewrite the json file storing all users
-      fs.writeFile("users.json", JSON.stringify(users), function(err) {
-        if (err) {
-          console.log(err);
-        }
-      });
+      saveUsers(users);
       return;
     } else {
       return message.reply("you've already claimed your daily ObtCoins");
@@ -234,11 +228,12 @@ client.on("message", async message => {
         if (amount <= users[payer].coin){
           ObtUser.transfer(message.author.id, message.mentions.users.first().id, users, amount);
           message.reply(amount + " ObtCoins successfully sent to " + message.mentions.users.first());
-          fs.writeFile("users.json", JSON.stringify(users), function(err) {
+          /*fs.writeFile("users.json", JSON.stringify(users), function(err) {
             if (err) {
               console.log(err);
             }
-          });
+          });*/
+          saveUsers(users);
           return;
         } else {
           return message.reply("you can't afford that!");
@@ -261,4 +256,12 @@ client.on("message", async message => {
 client.login(config.token);
 }catch(e){
   console.log(e);
+}
+
+function saveUsers(users){
+  fs.writeFile("users.json", JSON.stringify(users), function(err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 }
