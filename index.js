@@ -267,26 +267,40 @@ client.on("message", async message => {
   if (command === "buy"){
     let items = [["Uno Reverse Card", 50], ["God Role - How did you even get this item?",10000000], ["The Pass", 1000]]
     //If the user can't afford that item
-    if (users[userId].coin < items[args[0]-1][1]){
-      return message.reply("you can't afford that!");
-    } else{
-      if (items[args[0]-1][0] === "The Pass"){
-        //Currently you can still buy this even if you have the role, correct this if you like.
-        console.log("Granting pass");
-        message.member.addRole("539247904553041930");
+    try{
+      if (users[userId].coin < items[args[0]-1][1]){
+        return message.reply("you can't afford that!");
+      } else{
+        if (items[args[0]-1][0] === "The Pass"){
+          //Currently you can still buy this even if you have the role, correct this if you like.
+          console.log("Granting pass");
+          message.member.addRole("539247904553041930");
+        }
+        if (items[args[0]-1][0] === "God Role - How did you even get this item?"){
+          console.log("Granting God Role");
+          message.member.addRole("375449062528385027");
+          message.channel.send("How did you even afford this?");
+        }
+        //Subtract the correct amount of coin
+        users[userId].coin -= items[args[0]-1][1];
+        //Add the item to the user's inventory
+        users[userId].inventory.push(items[args[0]-1][0]);
+        //Give confirmation message
+        return message.reply(items[args[0]-1][0]+" successfully purchased!");
       }
-      if (items[args[0]-1][0] === "God Role - How did you even get this item?"){
-        console.log("Granting God Role");
-        message.member.addRole("375449062528385027");
-        message.channel.send("How did you even afford this?");
-      }
-      //Subtract the correct amount of coin
-      users[userId].coin -= items[args[0]-1][1];
-      //Add the item to the user's inventory
-      users[userId].inventory.push(items[args[0]-1]);
-      //Give confirmation message
-      return message.reply(items[args[0]-1][0]+" successfully purchased!");
+    } catch (e){
+      message.reply("please enter a valid item to purchase");
     }
+  }
+
+  //Inventory: Display the user's inventory
+  //Will display multiple copies of an item, feel free to add quantity display
+  if (command === "inventory"){
+    let output = "Inventory:\n";
+    for (i = 0; i < users[userId].inventory.length; i++){
+      output += (users[userId].inventory[i].toString() + "\n");
+    }
+    return message.channel.send(output);
   }
 
 });
