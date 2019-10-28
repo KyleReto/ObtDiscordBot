@@ -113,7 +113,9 @@ client.on("message", async message => {
     'Valid commands: \n' +
     '\`?o balance\` - Gives your current amount of ObtCoins\n' +
     '\`?o daily\` - Gives you your daily 100 ObtCoins\n' +
-    '\`?o transfer [@Target] [amount]\` - Transfers [amount] of ObtCoins to [@Target] from your account\n'
+    '\`?o transfer [@Target] [amount]\` - Transfers [amount] of ObtCoins to [@Target] from your account\n' +
+    '\`?o inventory\` - See your inventory of items\n' +
+    '\`?o shop\` - See the shop of items to buy'
     );
   }
 
@@ -249,6 +251,42 @@ client.on("message", async message => {
   //Give the user their current balance of ObtCoins
   if (command === "balance"){
     return message.reply("you have " + users[userId].coin + " ObtCoins");
+  }
+
+  //Shop: Display a list of items
+  if (command === "shop"){
+    return message.channel.send("" +
+    "Type \`?o buy [item number]\` to buy an item.\n" +
+    "1. Uno Reverse Card - 50 Coin\n"+
+    "2. God Role - 10000000 Coin\n" +
+    "3. The Pass - 1000 Coin"
+  );
+  }
+
+  //Buy: Buy an item from the Shop
+  if (command === "buy"){
+    let items = [["Uno Reverse Card", 50], ["God Role - How did you even get this item?",10000000], ["The Pass", 1000]]
+    //If the user can't afford that item
+    if (users[userId].coin < items[args[0]-1][1]){
+      return message.reply("you can't afford that!");
+    } else{
+      if (items[args[0]-1][0] === "The Pass"){
+        //Currently you can still buy this even if you have the role, correct this if you like.
+        console.log("Granting pass");
+        message.member.addRole("539247904553041930");
+      }
+      if (items[args[0]-1][0] === "God Role - How did you even get this item?"){
+        console.log("Granting God Role");
+        message.member.addRole("375449062528385027");
+        message.channel.send("How did you even afford this?");
+      }
+      //Subtract the correct amount of coin
+      users[userId].coin -= items[args[0]-1][1];
+      //Add the item to the user's inventory
+      users[userId].inventory.push(items[args[0]-1]);
+      //Give confirmation message
+      return message.reply(items[args[0]-1][0]+" successfully purchased!");
+    }
   }
 
 });
