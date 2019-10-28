@@ -285,6 +285,9 @@ client.on("message", async message => {
         users[userId].coin -= items[args[0]-1][1];
         //Add the item to the user's inventory
         users[userId].inventory.push(items[args[0]-1][0]);
+
+        saveUsers(users);
+
         //Give confirmation message
         return message.reply(items[args[0]-1][0]+" successfully purchased!");
       }
