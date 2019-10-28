@@ -9,6 +9,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 //Set ObtUser to the ObtUser file (see ./ObtUser.js in this folder)
 const ObtUser = require('./ObtUser.js');
+const Battle = require('./Battle.js');
 //fs is Node's filestream, used to read and write files
 var fs = require('fs');
 //users = the users.json file containing saved user data.
