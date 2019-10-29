@@ -1,6 +1,7 @@
 //On an error, log to console (see catch at end of file)
 try{
   //test comment
+  //test comment 2
 // Import the discord.js module
 // See https://discord.js.org/#/docs/main/stable/general/welcome
 const Discord = require('discord.js');
