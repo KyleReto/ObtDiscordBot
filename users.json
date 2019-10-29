@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"id":"97359616018505728","coin":150,"lastDailyDate":29,"inventory":["Uno Reverse Card"]},{"id":"195706394878410752","coin":100,"lastDailyDate":28,"inventory":[]},{"id":"141594124116688896","coin":0,"lastDailyDate":28,"inventory":["Uno Reverse Card","Uno Reverse Card"]},{"id":"135418191945007104","coin":50,"lastDailyDate":28,"inventory":["Uno Reverse Card"]},{"id":"101072867050917888","coin":100,"lastDailyDate":29,"inventory":[]}]
+=======
+[{"id":"97359616018505728","coin":150,"lastDailyDate":29,"inventory":["Uno Reverse Card"]},{"id":"195706394878410752","coin":100,"lastDailyDate":28,"inventory":[]},{"id":"141594124116688896","coin":0,"lastDailyDate":28,"inventory":["Uno Reverse Card","Uno Reverse Card"]},{"id":"135418191945007104","coin":50,"lastDailyDate":28,"inventory":["Uno Reverse Card"]}]
+>>>>>>> 9d4fc1c5f030f7237965a2c58d5bd66b53e8159d
