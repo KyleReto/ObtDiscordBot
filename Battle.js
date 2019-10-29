@@ -6,13 +6,32 @@ class Battle{
   }
 
   //This method simulates battle, getting input values as necessary to decide turn actions.
-  //Returns 0 if team 1 won, or 1 if team 2 won
-  async battle(client, message){
+  //Returns 0 if team 1 won, 1 if team 2 won, or -1 if the battle ended without a winner.
+  async battle(client){
     let battleComplete = false;
     let winner = -1;
     while(battleComplete === false){
       let turnCharacter = battleTick();
-      //TODO: Finish action select here
+      //Send the output of displayActions() to the owner of the turnCharacter
+      turnCharacter.owner.dmChannel.send(turnCharacter.displayActions());
+      let input = "";
+      //await the message from the user, set input as the input string
+      const filter = m => m.content.startsWith('!');
+      turnCharacter.owner.dmChannel.awaitMessages(filter, { max: 1, time: 600000, errors: ['time'] })
+          .then(collected => input = collected[0])
+          .catch(collected => battleComplete = true);
+      //inputArray = the input, minus the "!", with each part separated into an array by the space character
+      let inputArray = input.slice(1).trim().split(/ +/g);
+      //Parse inputArray into the option being selected and the targets
+      let option = inputArray[0];
+      let arrayOfPossibleTargets = team1.concat(team2);
+      let targets = [];
+      //Add each selected target into the targets array
+      for (let i = 1; i < inputArray; i++){
+        targets.push(arrayofPossibleTargets[inputArray[i]]);
+      }
+      //Do the turn actions on the option and targets according to the turnCharacter's class.
+      turnCharacter.turn(option, targets);
       //Check if team 1 is defeated
       if (isTeamDefeated(team1)){
         winner = 1;
