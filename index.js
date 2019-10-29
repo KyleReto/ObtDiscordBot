@@ -3,7 +3,7 @@ try{
 // Import the discord.js module
 // See https://discord.js.org/#/docs/main/stable/general/welcome
 const Discord = require('discord.js');
-//Set client to reference Discord.Client() from d iscord.js
+//Set client to reference Discord.Client() from discord.js
 const client = new Discord.Client();
 //Set config to the config json file (see ./config.json in this folder)
 const config = require("./config.json");
@@ -24,7 +24,6 @@ client.on('ready', () => {
   console.log('I am ready!');
   client.user.setActivity(`Testing new features!`);
 });
-//meme
 // Create an event listener for messages
 //In other words, all the code in this section will be executed once for every message sent in the server
 //The code will stop early if it runs into "return" and ignore the rest of the code (for that message)
@@ -83,7 +82,7 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
-  //im obt methods: Removed for being annoying
+  //im obt methods: Removed for being... well, annoying, to be honest
   /*if (message.content.toLowerCase().includes("im ")){
     let finalString = message.content;
     finalString = finalString.slice(finalString.toLowerCase().search("im")+3);
