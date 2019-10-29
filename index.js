@@ -5,12 +5,13 @@ try{
 // Import the discord.js module
 // See https://discord.js.org/#/docs/main/stable/general/welcome
 const Discord = require('discord.js');
-//Set client to reference Discord.Client() from d iscord.js
+//Set client to reference Discord.Client() from discord.js
 const client = new Discord.Client();
 //Set config to the config json file (see ./config.json in this folder)
 const config = require("./config.json");
 //Set ObtUser to the ObtUser file (see ./ObtUser.js in this folder)
 const ObtUser = require('./ObtUser.js');
+const Battle = require('./Battle.js');
 //fs is Node's filestream, used to read and write files
 var fs = require('fs');
 //users = the users.json file containing saved user data.
@@ -25,7 +26,6 @@ client.on('ready', () => {
   console.log('I am ready!');
   client.user.setActivity(`Testing new features!`);
 });
-//meme
 // Create an event listener for messages
 //In other words, all the code in this section will be executed once for every message sent in the server
 //The code will stop early if it runs into "return" and ignore the rest of the code (for that message)
@@ -84,7 +84,7 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
-  //im obt methods: Removed for being annoying
+  //im obt methods: Removed for being... well, annoying, to be honest
   /*if (message.content.toLowerCase().includes("im ")){
     let finalString = message.content;
     finalString = finalString.slice(finalString.toLowerCase().search("im")+3);
@@ -269,26 +269,43 @@ client.on("message", async message => {
   if (command === "buy"){
     let items = [["Uno Reverse Card", 50], ["God Role - How did you even get this item?",10000000], ["The Pass", 1000]]
     //If the user can't afford that item
-    if (users[userId].coin < items[args[0]-1][1]){
-      return message.reply("you can't afford that!");
-    } else{
-      if (items[args[0]-1][0] === "The Pass"){
-        //Currently you can still buy this even if you have the role, correct this if you like.
-        console.log("Granting pass");
-        message.member.addRole("539247904553041930");
+    try{
+      if (users[userId].coin < items[args[0]-1][1]){
+        return message.reply("you can't afford that!");
+      } else{
+        if (items[args[0]-1][0] === "The Pass"){
+          //Currently you can still buy this even if you have the role, correct this if you like.
+          console.log("Granting pass");
+          message.member.addRole("539247904553041930");
+        }
+        if (items[args[0]-1][0] === "God Role - How did you even get this item?"){
+          console.log("Granting God Role");
+          message.member.addRole("375449062528385027");
+          message.channel.send("How did you even afford this?");
+        }
+        //Subtract the correct amount of coin
+        users[userId].coin -= items[args[0]-1][1];
+        //Add the item to the user's inventory
+        users[userId].inventory.push(items[args[0]-1][0]);
+
+        saveUsers(users);
+
+        //Give confirmation message
+        return message.reply(items[args[0]-1][0]+" successfully purchased!");
       }
-      if (items[args[0]-1][0] === "God Role - How did you even get this item?"){
-        console.log("Granting God Role");
-        message.member.addRole("375449062528385027");
-        message.channel.send("How did you even afford this?");
-      }
-      //Subtract the correct amount of coin
-      users[userId].coin -= items[args[0]-1][1];
-      //Add the item to the user's inventory
-      users[userId].inventory.push(items[args[0]-1]);
-      //Give confirmation message
-      return message.reply(items[args[0]-1][0]+" successfully purchased!");
+    } catch (e){
+      message.reply("please enter a valid item to purchase");
     }
+  }
+
+  //Inventory: Display the user's inventory
+  //Will display multiple copies of an item, feel free to add quantity display
+  if (command === "inventory"){
+    let output = "Inventory:\n";
+    for (i = 0; i < users[userId].inventory.length; i++){
+      output += (users[userId].inventory[i].toString() + "\n");
+    }
+    return message.channel.send(output);
   }
 
 });
