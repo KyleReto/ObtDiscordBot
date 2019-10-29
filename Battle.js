@@ -14,12 +14,12 @@ class Battle{
       let turnCharacter = battleTick();
       //Send the output of displayActions() to the owner of the turnCharacter
       turnCharacter.owner.dmChannel.send(turnCharacter.displayActions());
-      input option = 0
+      let input = "";
       //await the message from the user, set input as the input string
       const filter = m => m.content.startsWith('!');
       turnCharacter.owner.dmChannel.awaitMessages(filter, { max: 1, time: 600000, errors: ['time'] })
-  .then(collected => input = collected[0]))
-  .catch(collected => battleComplete = true);
+          .then(collected => input = collected[0])
+          .catch(collected => battleComplete = true);
       //inputArray = the input, minus the "!", with each part separated into an array by the space character
       let inputArray = input.slice(1).trim().split(/ +/g);
       //Parse inputArray into the option being selected and the targets
