@@ -84,22 +84,17 @@ client.on("message", async message => {
 
   //Helpful Statement Generator Code
   //Arrays of words to pull from
-  /**
+
   var initializer_array = ["Fuck you", "Eat shit","Go die"];
   var verb_array = ["suck", "eat", "lick", "sniff", "worship"];
   var body_part_array = ["foot", "ass", "dick", "pussy", "toe", "thumb", "tongue"];
   var first_adj_array = ["pencil neck", "pajama wearin", "soy faced", "soy milk drinkin'", "worm-eyed", "cock suckin'", "Mama's teat suckin'", "incontinent little", "smol", "fat"];
   var second_descriptor_array = ["filthy", "mama's", "smelly","cum", "diarrhea", "stupid"];
   var finale_array = ["boy", "dumpster", "slut", "nerd", "skunk", "skank", "dumbass", "cunt", "laptop"];
-  */
 
   if (message.content.toLowerCase().includes("randomhelp")){
-    var initializer_array = ["Fuck you", "Eat shit","Go die"];
-    var verb_array = ["suck", "eat", "lick", "sniff", "worship"];
-    var body_part_array = ["foot", "ass", "dick", "pussy", "toe", "thumb", "tongue"];
-    var first_adj_array = ["pencil neck", "pajama wearin", "soy faced", "soy milk drinkin'", "worm-eyed", "cock suckin'", "Mama's teat suckin'", "incontinent little", "smol", "fat"];
-    var second_descriptor_array = ["filthy", "mama's", "smelly","cum", "diarrhea", "stupid"];
-    var finale_array = ["boy", "dumpster", "slut", "nerd", "skunk", "skank", "dumbass", "cunt", "laptop"];
+
+    //Generate random numbers within the range of each array
     var x = (Math.random() * 2);
     var y = (Math.random() * 4);
     var z = (Math.random() * 6);
@@ -109,6 +104,8 @@ client.on("message", async message => {
 
 
     console.log('random insult generated!');
+
+    //Throw a spicy line at your Target
     return message.channel.send(initializer_array[x].toString() + ", " + verb_array[y].toString() + " my " + body_part_array[z].toString() + " you " + first_adj_array[a].toString() + second_descriptor_array[b].toString() + finale_array[c].toString());
   }
 
