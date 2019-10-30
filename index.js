@@ -333,6 +333,25 @@ client.on("message", async message => {
     return message.channel.send(output);
   }
 
+  //NoU: Uses an Uno Reverse Card
+  if (command === "nou") {
+    let item = 'Uno Reverse Card';
+    //Checks\ the inventory for a reverse Card
+    for ( i = 0; i <= users[userId].inventory.length; i++){
+      if(users[userId].inventory[i] === item){
+        //Removes the card from the user's inventory
+        users[userId].inventory.splice(i,1);
+        //Grabs the reverse card image
+        const ATTACHMENT = new Discord.Attachment('./resources/uno.jpg');
+        //returns the reverse card image
+        return message.channel.send(ATTACHMENT);
+      }else{
+        //returns if the user doesn't have an uno card
+        return message.channel.send("... you can't");
+      }
+    }
+  }
+  
   //Kirby of Dissapointment command
   if (command === "kirb") {
     //grab Sad kirby
