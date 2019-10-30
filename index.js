@@ -92,15 +92,16 @@ client.on("message", async message => {
   var finale_array = ["boy", "dumpster", "slut", "nerd", "skunk", "skank", "dumbass", "cunt", "laptop"];
 
   if (message.content.toLowerCase().includes("randominsult")){
-    var x = (Math.random() * 2);
-    var y = (Math.random() * 4);
-    var z = (Math.random() * 6);
-    var a = (Math.random() * 9);
-    var b = (Math.random() * 5);
-    var c = (Math.random() * 8);
+    var x = initializer_array[(Math.random() * 2)];
+    var y = verb_array[(Math.random() * 4)];
+    var z = body_part_array[(Math.random() * 6)];
+    var a = first_adj_array[(Math.random() * 9)];
+    var b = second_descriptor_array[(Math.random() * 5)];
+    var c = finale_array[(Math.random() * 8)];
+
 
     console.log('random insult generated!');
-    return message.channel.send(initializer_array[x] + ", " + verb_array[y] + " my " + body_part_array[z] + " you " + first_adj_array[a] + second_descriptor_array[b] + finale_array[c]);
+    return message.channel.send(x + ", " + y + " my " + z + " you " + a + b + c);
   }
 
   //im obt methods: Removed for being... well, annoying, to be honest
