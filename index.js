@@ -91,17 +91,17 @@ client.on("message", async message => {
   var second_descriptor_array = ["filthy", "mama's", "smelly","cum", "diarrhea", "stupid"];
   var finale_array = ["boy", "dumpster", "slut", "nerd", "skunk", "skank", "dumbass", "cunt", "laptop"];
 
-  if (message.content.toLowerCase().includes("randominsult")){
-    var x = initializer_array[(Math.random() * 2)];
-    var y = verb_array[(Math.random() * 4)];
-    var z = body_part_array[(Math.random() * 6)];
-    var a = first_adj_array[(Math.random() * 9)];
-    var b = second_descriptor_array[(Math.random() * 5)];
-    var c = finale_array[(Math.random() * 8)];
+  if (message.content.toLowerCase().includes("randomhelp")){
+    var x = (Math.random() * 2);
+    var y = (Math.random() * 4);
+    var z = (Math.random() * 6);
+    var a = (Math.random() * 9);
+    var b = (Math.random() * 5);
+    var c = (Math.random() * 8);
 
 
     console.log('random insult generated!');
-    return message.channel.send(x.toString() + ", " + y.toString() + " my " + z.toString() + " you " + a.toString() + b.toString() + c.toString());
+    return message.channel.send(initializer_array[x].toString() + ", " + verb_array[y].toString() + " my " + body_part_array[z].toString() + " you " + first_adj_array[a].toString() + second_descriptor_array[b].toString() + finale_array[c].toString());
   }
 
   //im obt methods: Removed for being... well, annoying, to be honest
