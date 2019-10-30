@@ -101,7 +101,7 @@ client.on("message", async message => {
 
 
     console.log('random insult generated!');
-    return message.channel.send(x + ", " + y + " my " + z + " you " + a + b + c);
+    return message.channel.send(x.toString() + ", " + y.toString() + " my " + z.toString() + " you " + a.toString() + b.toString() + c.toString());
   }
 
   //im obt methods: Removed for being... well, annoying, to be honest
