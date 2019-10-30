@@ -82,6 +82,27 @@ client.on("message", async message => {
     return message.channel.send(ATTACHMENT);
   }
 
+  //Helpful Statement Generator Code
+  //Arrays of words to pull from
+  var initializer_array = ["Fuck you", "Eat shit","Go die"];
+  var verb_array = ["suck", "eat", "lick", "sniff", "worship"];
+  var body_part_array = ["foot", "ass", "dick", "pussy", "toe", "thumb", "tongue"];
+  var first_adj_array = ["pencil neck", "pajama wearin", "soy faced", "soy milk drinkin'", "worm-eyed", "cock suckin'", "Mama's teat suckin'", "incontinent little", "smol", "fat"];
+  var second_descriptor_array = ["filthy", "mama's", "smelly","cum", "diarrhea", "stupid"];
+  var finale_array = ["boy", "dumpster", "slut", "nerd", "skunk", "skank", "dumbass", "cunt", "laptop"];
+
+  if (message.content.toLowerCase().includes("randominsult")){
+    var x = (Math.random() * 2);
+    var y = (Math.random() * 4);
+    var z = (Math.random() * 6);
+    var a = (Math.random() * 9);
+    var b = (Math.random() * 5);
+    var c = (Math.random() * 8);
+
+    console.log('random insult generated!');
+    return message.channel.send(initializer_array[x] + ", " + verb_array[y] + " my " + body_part_array[z] + " you " + first_adj_array[a] + second_descriptor_array[b] + finale_array[c]);
+  }
+
   //im obt methods: Removed for being... well, annoying, to be honest
   /*if (message.content.toLowerCase().includes("im ")){
     let finalString = message.content;
@@ -304,25 +325,6 @@ client.on("message", async message => {
       output += (users[userId].inventory[i].toString() + "\n");
     }
     return message.channel.send(output);
-  }
-
-  //NoU: Uses an Uno Reverse Card
-  if (command === "nou") {
-    let item = 'Uno Reverse Card';
-    //Checks\ the inventory for a reverse Card
-    for ( i = 0; i <= users[userId].inventory.length; i++){
-      if(users[userId].inventory[i] === item){
-        //Removes the card from the user's inventory
-        users[userId].inventory.splice(i,1);
-        //Grabs the reverse card image
-        const ATTACHMENT = new Discord.Attachment('./resources/uno.jpg');
-        //returns the reverse card image
-        return message.channel.send(ATTACHMENT);
-      }else{
-        //returns if the user doesn't have an uno card
-        return message.channel.send("... you can't");
-      }
-    }
   }
 
   //Kirby of Dissapointment command
