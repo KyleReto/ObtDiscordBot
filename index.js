@@ -319,15 +319,10 @@ client.on("message", async message => {
         //returns the reverse card image
         return message.channel.send(ATTACHMENT);
       }else{
-        message.channel.send("... you can't");
+        //returns if the user doesn't have an uno card
+        return message.channel.send("... you can't");
       }
     }
-    //const ATTACHMENT = new Discord.Attachment('./resources/vibecheck.gif');
-    //Send a message that consists of the Attachment object in the ATTACHMENT constant from above.
-    //return message.channel.send(ATTACHMENT);
-    //Log the text "vibecheck" into the console (The window you see when you run obt on your computer).
-    //`console.log`s are mostly for debugging purposes, they don't do anything practical.
-    //console.log('vibecheck');
   }
 
   //Kirby of Dissapointment command
