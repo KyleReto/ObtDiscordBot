@@ -198,8 +198,6 @@ client.on("message", async message => {
   if (command === "daily"){
     //Give the user their daily ObtCoin allowance
     //If the date today and the last daily date are different
-    //Known bug: If a user tries to retrieve their daily coins on the same date of the month as the last time they did (eg. last retrieved - Feb 16, current date Mar 16), it will fail due to "already claiming their coins".
-    //Fix this if you like, I'm not planning to since that case is very unlikely and has very little consequence. Remove these comments if you do.
     if (new Date(Date.now()).getDate() != users[userId].lastDailyDate){
       message.reply("here is your daily 100 ObtCoins.");
       users[userId].coin += 100;
