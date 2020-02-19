@@ -9,14 +9,13 @@ const client = new Discord.Client();
 const config = require("./config.json");
 //Set ObtUser to the ObtUser file (see ./ObtUser.js in this folder)
 const ObtUser = require('./ObtUser.js');
-const Battle = require('./Battle.js');
 //fs is Node's filestream, used to read and write files
 var fs = require('fs');
 //users = the users.json file containing saved user data.
 let users = JSON.parse(fs.readFileSync("users.json"));
 
 //Prefix for command input
-const prefix = "?o"
+const prefix = "?o";
 /**
  * All bot code must follow the ready event
  */
@@ -34,7 +33,7 @@ client.on("message", async message => {
   //How Cute command
   if (message.content.toLowerCase().includes("how cute") ) {
     //grab how cute
-    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg')
+    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg');
 
     //print to console
     console.log('howcute');
@@ -46,7 +45,7 @@ client.on("message", async message => {
   //Bruh Moment Command
   if (message.content.toLowerCase().includes("bruh moment")){
     //grab bruh Moment
-    const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png')
+    const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png');
 
     //print to console
     console.log('THIS IS A CERTIFIED BRUH MOMENT');
@@ -177,16 +176,17 @@ client.on("message", async message => {
     */
     const ATTACHMENT = new Discord.Attachment('./resources/vibecheck.gif');
     //Send a message that consists of the Attachment object in the ATTACHMENT constant from above.
-    return message.channel.send(ATTACHMENT);
     //Log the text "vibecheck" into the console (The window you see when you run obt on your computer).
     //`console.log`s are mostly for debugging purposes, they don't do anything practical.
     console.log('vibecheck');
+    return message.channel.send(ATTACHMENT);
+    
   }
 
   //excuse me command
   if (command === "excuseme") {
     //grab excuse me
-    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif')
+    const ATTACHMENT = new Discord.Attachment('./resources/excuseme.gif');
 
     //print to console
     console.log('excuseme');
@@ -198,8 +198,6 @@ client.on("message", async message => {
   if (command === "daily"){
     //Give the user their daily ObtCoin allowance
     //If the date today and the last daily date are different
-    //Known bug: If a user tries to retrieve their daily coins on the same date of the month as the last time they did (eg. last retrieved - Feb 16, current date Mar 16), it will fail due to "already claiming their coins".
-    //Fix this if you like, I'm not planning to since that case is very unlikely and has very little consequence. Remove these comments if you do.
     if (new Date(Date.now()).getDate() != users[userId].lastDailyDate){
       message.reply("here is your daily 100 ObtCoins.");
       users[userId].coin += 100;
@@ -217,30 +215,25 @@ client.on("message", async message => {
   if (command === "transfer"){
     //Set relevant users, send error message if necessary
     try{
-      var payee = ObtUser.getUserIndexById(message.mentions.users.first().id, users);
+      ObtUser.getUserIndexById(message.mentions.users.first().id, users);
       var payer = ObtUser.getUserIndexById(message.author.id, users);
-    } catch {
+    } catch (e){
       return message.reply("please mention a user (@Username) to use this command!");
     }
     //If the input is a valid number input
     var amount = parseInt(args[1]);
-    if (typeof amount != NaN && amount != 0){
+    if (typeof !amount.isNan() && amount != 0){
       //If the payer can afford the input amount
       try{
         if (amount <= users[payer].coin){
           ObtUser.transfer(message.author.id, message.mentions.users.first().id, users, amount);
           message.reply(amount + " ObtCoins successfully sent to " + message.mentions.users.first());
-          /*fs.writeFile("users.json", JSON.stringify(users), function(err) {
-            if (err) {
-              console.log(err);
-            }
-          });*/
           saveUsers(users);
           return;
         } else {
           return message.reply("you can't afford that!");
         }
-      }catch{
+      }catch (e){
         return message.reply("that user isn't registered.");
       }
     } else {
@@ -265,7 +258,7 @@ client.on("message", async message => {
 
   //Buy: Buy an item from the Shop
   if (command === "buy"){
-    let items = [["Uno Reverse Card", 50], ["God Role - How did you even get this item?",10000000], ["The Pass", 1000]]
+    let items = [["Uno Reverse Card", 50], ["God Role - How did you even get this item?",10000000], ["The Pass", 1000]];
     //If the user can't afford that item
     try{
       if (users[userId].coin < items[args[0]-1][1]){
@@ -310,7 +303,7 @@ client.on("message", async message => {
   if (command === "nou") {
     let item = 'Uno Reverse Card';
     //Checks\ the inventory for a reverse Card
-    for ( i = 0; i <= users[userId].inventory.length; i++){
+    for (var i = 0; i <= users[userId].inventory.length; i++){
       if(users[userId].inventory[i] === item){
         //Removes the card from the user's inventory
         users[userId].inventory.splice(i,1);
@@ -328,7 +321,7 @@ client.on("message", async message => {
   //Kirby of Dissapointment command
   if (command === "kirb") {
     //grab Sad kirby
-    const ATTACHMENT = new Discord.Attachment('./resources/kirb.jpg')
+    const ATTACHMENT = new Discord.Attachment('./resources/kirb.jpg');
 
     //print to console
     console.log('kirb');
