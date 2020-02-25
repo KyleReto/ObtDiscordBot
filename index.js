@@ -141,7 +141,7 @@ client.on("message", async message => {
   }
 
   // How Cute command
-  if (command == "how cute") {
+  if (command == "howcute") {
     //grab how cute
     const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg');
 
@@ -153,7 +153,7 @@ client.on("message", async message => {
   }
 
   // Medic Bag Command
-  if (command == "i need a medic bag"){
+  if (command == "medicbag"){
     const ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
 
     console.log('fbi open up');
@@ -162,7 +162,7 @@ client.on("message", async message => {
   }
 
   //Bruh Moment Command
-  if (command == "bruh moment"){
+  if (command == "bruhmoment"){
     //grab bruh Moment
     const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png');
 
@@ -177,7 +177,7 @@ client.on("message", async message => {
   }
   
   //Piranha Plant command
-  if (command == "piranha plant"){
+  if (command == "piranhaplant"){
     message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
     message.channel.send('I wrote my thesis on Piranha Plants! There are just so many species! You got your basic Piranha Plants, your Fire Piranha Plants, Ptooies, Nipper Plants, Nipper Spores, Munchers, Jumping Piranhas, Wild Ptooie Piranhas, Propeller Piranhas, Naval Piranhas, Chewies, Megasmilax, Piranha Pests, Piranha Sprouts, Frost Piranhas, Putrid Piranhas, Proto Piranhas, Piranhabons, Piranha Beans, Mom Piranhas, Small Piranhas, Elasto-Piranhas, Piranha Planets, Bungee Piranhas, Big Bungee Piranhas, Ghosts, Nipper Dandelions, Spiny Piranhas, Dino Piranhas, Fire Stalking Piranhas, Piranha Plorps, River Piranhas, Big Piranhas, Stalking Piranhas, Big Fire Piranhas, Prickly Piranhas, Peewee Piranhas, Inky Piranhas, Gold Piranhas, Bone Piranhas, Big Bone Piranhas, Piranha Pods, Piranha Creepers, Nipper Spore Patches, Paper Fire Piranhas, Poison Piranhas, Big Poison Piranhas, Upside-Down Piranhas, Petey Piranha, Paper Petey Piranha, Petea Piranha-');
     message.channel.send('I haven\'t even started on all the minor variations!');
