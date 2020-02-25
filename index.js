@@ -30,51 +30,8 @@ client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
 
-  //How Cute command
-  if (message.content.toLowerCase().includes("how cute") ) {
-    //grab how cute
-    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg');
-
-    //print to console
-    console.log('howcute');
-
-    //send pic
-    return message.channel.send(ATTACHMENT);
-  }
-
-  //Bruh Moment Command
-  if (message.content.toLowerCase().includes("bruh moment")){
-    //grab bruh Moment
-    const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png');
-
-    //print to console
-    console.log('THIS IS A CERTIFIED BRUH MOMENT');
-
-    //print message
-    message.channel.send('THIS IS A CERTIFIED BRUH MOMENT');
-
-    //send IMAGE
-    return message.channel.send(ATTACHMENT);
-  }
-
-  //Piranha Plant command
-  if (message.content.toLowerCase().includes("piranha plant")){
-    message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
-    message.channel.send('I wrote my thesis on Piranha Plants! There are just so many species! You got your basic Piranha Plants, your Fire Piranha Plants, Ptooies, Nipper Plants, Nipper Spores, Munchers, Jumping Piranhas, Wild Ptooie Piranhas, Propeller Piranhas, Naval Piranhas, Chewies, Megasmilax, Piranha Pests, Piranha Sprouts, Frost Piranhas, Putrid Piranhas, Proto Piranhas, Piranhabons, Piranha Beans, Mom Piranhas, Small Piranhas, Elasto-Piranhas, Piranha Planets, Bungee Piranhas, Big Bungee Piranhas, Ghosts, Nipper Dandelions, Spiny Piranhas, Dino Piranhas, Fire Stalking Piranhas, Piranha Plorps, River Piranhas, Big Piranhas, Stalking Piranhas, Big Fire Piranhas, Prickly Piranhas, Peewee Piranhas, Inky Piranhas, Gold Piranhas, Bone Piranhas, Big Bone Piranhas, Piranha Pods, Piranha Creepers, Nipper Spore Patches, Paper Fire Piranhas, Poison Piranhas, Big Poison Piranhas, Upside-Down Piranhas, Petey Piranha, Paper Petey Piranha, Petea Piranha-');
-    message.channel.send('I haven\'t even started on all the minor variations!');
-    return console.log("Piranha Plant");
-  }
-
   if (message.content.toLowerCase().includes("fbi open up")){
     const ATTACHMENT = new Discord.Attachment('./resources/fbiopenup.gif');
-
-    console.log('fbi open up');
-
-    return message.channel.send(ATTACHMENT);
-  }
-
-  if (message.content.toLowerCase().includes("i need a medic bag")){
-    const ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
 
     console.log('fbi open up');
 
@@ -183,6 +140,50 @@ client.on("message", async message => {
     
   }
 
+  // How Cute command
+  if (command == "how cute") {
+    //grab how cute
+    const ATTACHMENT = new Discord.Attachment('./resources/howcute.jpg');
+
+    //print to console
+    console.log('howcute');
+
+    //send pic
+    return message.channel.send(ATTACHMENT);
+  }
+
+  // Medic Bag Command
+  if (command == "i need a medic bag"){
+    const ATTACHMENT = new Discord.Attachment('./resources/medicbag.png');
+
+    console.log('fbi open up');
+
+    return message.channel.send(ATTACHMENT);
+  }
+
+  //Bruh Moment Command
+  if (command == "bruh moment"){
+    //grab bruh Moment
+    const ATTACHMENT = new Discord.Attachment('./resources/bruhMoment.png');
+
+    //print to console
+    console.log('THIS IS A CERTIFIED BRUH MOMENT');
+
+    //print message
+    message.channel.send('THIS IS A CERTIFIED BRUH MOMENT');
+
+    //send IMAGE
+    return message.channel.send(ATTACHMENT);
+  }
+  
+  //Piranha Plant command
+  if (command == "piranha plant"){
+    message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
+    message.channel.send('I wrote my thesis on Piranha Plants! There are just so many species! You got your basic Piranha Plants, your Fire Piranha Plants, Ptooies, Nipper Plants, Nipper Spores, Munchers, Jumping Piranhas, Wild Ptooie Piranhas, Propeller Piranhas, Naval Piranhas, Chewies, Megasmilax, Piranha Pests, Piranha Sprouts, Frost Piranhas, Putrid Piranhas, Proto Piranhas, Piranhabons, Piranha Beans, Mom Piranhas, Small Piranhas, Elasto-Piranhas, Piranha Planets, Bungee Piranhas, Big Bungee Piranhas, Ghosts, Nipper Dandelions, Spiny Piranhas, Dino Piranhas, Fire Stalking Piranhas, Piranha Plorps, River Piranhas, Big Piranhas, Stalking Piranhas, Big Fire Piranhas, Prickly Piranhas, Peewee Piranhas, Inky Piranhas, Gold Piranhas, Bone Piranhas, Big Bone Piranhas, Piranha Pods, Piranha Creepers, Nipper Spore Patches, Paper Fire Piranhas, Poison Piranhas, Big Poison Piranhas, Upside-Down Piranhas, Petey Piranha, Paper Petey Piranha, Petea Piranha-');
+    message.channel.send('I haven\'t even started on all the minor variations!');
+    return console.log("Piranha Plant");
+  }
+  
   //excuse me command
   if (command === "excuseme") {
     //grab excuse me
