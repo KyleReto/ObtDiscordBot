@@ -21,7 +21,7 @@ const prefix = "?o";
  */
 client.on('ready', () => {
   console.log('I am ready!');
-  client.user.setActivity(`Testing new features!`);
+  client.user.setActivity(`Testing new features, and git.`);
 });
 // Create an event listener for messages
 //In other words, all the code in this section will be executed once for every message sent in the server
@@ -137,7 +137,7 @@ client.on("message", async message => {
     //`console.log`s are mostly for debugging purposes, they don't do anything practical.
     console.log('vibecheck');
     return message.channel.send(ATTACHMENT);
-    
+
   }
 
   // How Cute command
@@ -175,7 +175,7 @@ client.on("message", async message => {
     //send IMAGE
     return message.channel.send(ATTACHMENT);
   }
-  
+
   //Piranha Plant command
   if (command == "piranhaplant"){
     message.channel.send('**DID SOMEONE SAY PIRANHA PLANT?!**');
@@ -183,7 +183,7 @@ client.on("message", async message => {
     message.channel.send('I haven\'t even started on all the minor variations!');
     return console.log("Piranha Plant");
   }
-  
+
   //excuse me command
   if (command === "excuseme") {
     //grab excuse me
