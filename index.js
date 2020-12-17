@@ -1,4 +1,7 @@
 //On an error, log to console (see catch at end of file)
+
+//Hi Kyle
+
 try{
 // Import the discord.js module
 // See https://discord.js.org/#/docs/main/stable/general/welcome
