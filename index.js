@@ -11,12 +11,21 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //Set config to the config json file (see ./config.json in this folder)
 const config = require("./config.json");
-//Set ObtUser to the ObtUser file (see ./ObtUser.js in this folder)
+//Set objects to their respective files
 const ObtUser = require('./ObtUser.js');
+const Player = require('./Player.js');
+const Card = require('./Card.js');
+const DeBuff = require('./DeBuffs.js');
 //fs is Node's filestream, used to read and write files
 var fs = require('fs');
 //users = the users.json file containing saved user data.
 let users = JSON.parse(fs.readFileSync("users.json"));
+
+//Create players for ObtGame
+let p1, p2;
+
+//Create isGameActive boolean
+let isGameActive = false;
 
 //Prefix for command input
 const prefix = "?o";
@@ -33,14 +42,6 @@ client.on('ready', () => {
 client.on("message", async message => {
   //Ignore bot input (prevents looping mainly, also deals with other bots)
   if(message.author.bot) return;
-
-  if (message.content.toLowerCase().includes("fbi open up")){
-    const ATTACHMENT = new Discord.Attachment('./resources/fbiopenup.gif');
-
-    console.log('fbi open up');
-
-    return message.channel.send(ATTACHMENT);
-  }
 
   //im obt methods: Removed for being... well, annoying, to be honest
   /*if (message.content.toLowerCase().includes("im ")){
@@ -104,6 +105,7 @@ client.on("message", async message => {
       Generally, this is used for other information a command needs once the command is known
           eg In Tatsumaki, you can do !t avatar @username. "avatar" is the command, "@username" is the first argument (args[0])
   */
+
   if (command === "debugping"){
     /*
     If you start a line with 'return' like is done here, all code after that line will be ignored.
@@ -142,6 +144,29 @@ client.on("message", async message => {
     console.log('vibecheck');
     return message.channel.send(ATTACHMENT);
 
+  }
+
+  // Play Game command
+  if (command === 'playgame') {
+    if (isGameActive === false) {
+      if (message.author === message.mentions.users.first()) {
+        return message.channel.send("You can't fight yourself... or can you?");
+      } //Stops here if both players are the same person
+      isGameActive = true;
+      p1 = new Player(message.author.username);
+      p2 = new Player(message.mentions.users.first().username);
+
+      return message.channel.send(p1.name + " vs. " + p2.name);
+
+    } else {return message.channel.send("Another game is currently running.")};
+  }
+
+  if (command === 'forcestop') {
+    // TODO: Check if person is in the current game
+    isGameActive = false;
+    p1 = null;
+    p2 = null;
+    return message.channel.send("The game has stopped.");
   }
 
   // How Cute command
