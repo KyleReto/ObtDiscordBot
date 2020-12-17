@@ -1,6 +1,7 @@
 //On an error, log to console (see catch at end of file)
 
 //Hi Kyle
+//Ki Kyle, but again
 
 try{
 // Import the discord.js module
